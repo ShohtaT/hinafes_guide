@@ -1,7 +1,8 @@
-# hinatafes_guide
+# hinafes_guide
 
 ## Project setup
 ```
+// @ref https://qiita.com/C_HERO/items/318fe65871f8e53e8c80
 yarn install
 ```
 
@@ -22,4 +23,3 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# hinafes_guide
