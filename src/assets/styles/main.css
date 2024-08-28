@@ -1,0 +1,139 @@
+:root {
+  --color-primary: #4BB1EF;
+  --color-base: #D0E9F7;
+  --color-secondary: #F5A623;
+  --color-background: #F8F8F8;
+  --color-white: #FFFFFF;
+  --color-text: #193041;
+  --color-border: #E0E0E0;
+  --color-check: #FF69B4;
+  --color-accent-yellow: #F3E46E;
+  --font-family: "M PLUS Rounded 1c", sans-serif;
+  --font-size-title: 20px;
+  --font-size-subtitle: 18px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --spacing-unit: 8px;
+}
+
+body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color-primary);
+  padding: 10px 0;
+}
+
+.tab {
+  color: var(--color-white);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.active-tab {
+  font-weight: bold;
+}
+
+.active-tab::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: yellow;
+  margin-top: 5px;
+}
+
+.category {
+  background-color: var(--color-white);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category h2 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.checked {
+  color: var(--color-check);
+}
+
+.item-actions {
+  margin-left: auto;
+}
+
+.item-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  opacity: 0.5;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.bottom-nav-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.active-nav-item {
+  color: var(--color-primary);
+}
