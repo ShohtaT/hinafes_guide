@@ -60,7 +60,8 @@ export default {
               { id: 12, text: "フード付きバスタオル", checked: false },
               { id: 13, text: "レインコート", checked: false },
               { id: 14, text: "帽子", checked: false },
-              { id: 15, text: "サングラス", checked: false }
+              { id: 15, text: "サングラス", checked: false },
+              { id: 16, text: "長いテキストの折り返しはどの様に表示されるのかをテストしたい", checked: false }
             ]
           }
         ]
@@ -89,5 +90,6 @@ export default {
   padding: 8px 0 24px 0;
   min-height: 100%;
   min-width: 100%;
+  background-color: var(--color-base);
 }
 </style>

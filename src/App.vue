@@ -23,10 +23,8 @@ export default {
 
 <style>
 #app {
-  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--color-text);
   /* max-width: 480px; */
   min-width: 100%;
   margin: 0 auto;
@@ -38,6 +36,6 @@ export default {
 .content-wrapper {
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 60px; /* BottomNavigationの高さ分の余白 */
+  padding-bottom: 64px; /* BottomNavigationの高さ分の余白 */
 }
 </style>

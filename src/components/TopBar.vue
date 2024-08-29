@@ -40,7 +40,7 @@ export default {
 h1 {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: var(--spacing-unit);
+  margin: 0;
   padding-top: 8px;
   font-style: normal;
 }
@@ -58,7 +58,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #333;
+  color: var(--color-text);
   text-decoration: none;
   width: 50%; /* 画面幅の半分を占める */
   text-align: center; /* 文字を中央に配置 */

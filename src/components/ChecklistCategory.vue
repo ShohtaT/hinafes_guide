@@ -54,7 +54,7 @@ export default {
 h2 {
   font-size: 18px;
   font-weight: 700;
-  padding: 16px 24px 16px 24px;
+  padding: 16px 24px;
   margin: 0;
 }
 
@@ -73,9 +73,10 @@ li {
   font-size: 16px;
   padding: 0 0 16px 0;
   font-weight: 500;
+  width: 100%;
   display: flex;
-  align-items: center; /* Align items vertically */
-  justify-content: flex-start; /* Align items to the left */
+  align-items: flex-start; /* 垂直方向の開始位置に揃える */
+  justify-content: flex-start; /* 水平方向に左揃え */
 }
 
 input[type="checkbox"] {
@@ -89,7 +90,10 @@ input[type="checkbox"] {
   border-radius: 50%;
   cursor: pointer;
   position: relative;
-  margin-right: 8px; /* Add space between checkbox and text */
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle; /* チェックボックスをテキストと同じ高さに揃える */
+  flex-shrink: 0; /* チェックボックスのサイズを固定する */
 }
 
 input[type="checkbox"]:checked {
@@ -105,10 +109,14 @@ input[type="checkbox"]:checked::before {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%; /* チェックマークを中央に揃える */
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+label {
+  display: inline-flex; /* inline-flexに変更 */
+  align-items: center; /* チェックボックスとテキストの高さを揃える */
+  line-height: 1.5; /* テキストが複数行になった時の行間調整 */
+}
 </style>

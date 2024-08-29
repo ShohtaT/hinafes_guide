@@ -70,7 +70,7 @@ export default {
   align-items: center;
   background-color: var(--color-white);
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  height: 60px;
+  height: 64px;
   margin: 0 auto;
 }
 
@@ -81,7 +81,7 @@ export default {
   justify-content: center;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   width: 50%;
   text-align: center;
 }
