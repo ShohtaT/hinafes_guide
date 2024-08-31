@@ -1,6 +1,7 @@
 <template>
   <nav class="bottom-navigation">
     <router-link 
+      v-if="!isLiveOrBelongingsView" 
       to="/belongings" 
       class="nav-item" 
       :class="[checklistClass, { 'active': isActive('/belongings') }]"
@@ -12,6 +13,18 @@
       />
       チェックリスト
     </router-link>
+    <div 
+      v-else
+      class="nav-item" 
+      :class="[checklistClass, { 'active': isActive('/belongings') }]"
+    >
+      <img 
+        src="../assets/checklist_logo.svg" 
+        class="icon" 
+        :style="checklistIconStyle" 
+      />
+      チェックリスト
+    </div>
     <div 
       class="nav-item" 
       @click="showNoteMessage" 
@@ -27,6 +40,7 @@
   </nav>
 </template>
 
+
 <script>
 export default {
   name: 'BottomNavigation',
@@ -36,10 +50,10 @@ export default {
       return path === '/live' || path === '/belongings';
     },
     checklistClass() {
-      return this.isLiveOrBelongingsView ? 'primary-text' : 'black-text';
+      return this.isLiveOrBelongingsView ? 'primary-text' : 'gray-text';
     },
     noteClass() {
-      return this.isLiveOrBelongingsView ? 'black-text' : 'red-text';
+      return this.isLiveOrBelongingsView ? 'gray-text' : 'primary-text';
     },
     checklistIconStyle() {
       return this.isLiveOrBelongingsView ? 'filter: invert(35%) sepia(100%) saturate(1000%) hue-rotate(180deg) brightness(93%) contrast(90%);' : '';
@@ -93,9 +107,16 @@ export default {
 
 .primary-text {
   color: var(--color-primary);
+  font-weight: 700;
+}
+
+.gray-text {
+  color: var(--color-gray);
+  font-weight: 500;
 }
 
 .active {
   color: var(--color-primary);
+  font-weight: 700;
 }
 </style>

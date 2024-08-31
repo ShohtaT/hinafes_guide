@@ -97,13 +97,13 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: #FF4F86;
-  border-color: #FF4F86;
+  background-color: var(--color-check);
+  border-color: var(--color-check);
 }
 
 input[type="checkbox"]:checked::before {
   content: "✔";
-  color: white;
+  color: var(--color-white);
   font-size: 14px;
   display: flex;
   align-items: center;
