@@ -73,7 +73,7 @@ export default {
               { id: 19, text: "推しメンタオル", checked: false },
               { id: 20, text: "ペンライト", checked: false },
               { id: 21, text: "うちわ・スケッチブック", checked: false },
-              { id: 22, text: "アクリルスタンド・生写", checked: false },
+              { id: 22, text: "アクリルスタンド・生写真", checked: false },
               { id: 23, text: "ライブチケット", checked: false },
               { id: 24, text: "双眼鏡", checked: false }
             ]
