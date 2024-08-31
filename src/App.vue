@@ -1,28 +1,41 @@
 <template>
-  <div>
-    <HelloWorld />
+  <div id="app">
+    <TopBar />
+    <div class="content-wrapper">
+      <router-view></router-view>
+    </div>
+    <BottomNavigation />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TopBar from './components/TopBar.vue'
+import BottomNavigation from './components/BottomNavigation.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TopBar,
+    BottomNavigation
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  max-width: 480px;
-  margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  /* max-width: 480px; */
+  min-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 64px; /* BottomNavigationの高さ分の余白 */
 }
 </style>
