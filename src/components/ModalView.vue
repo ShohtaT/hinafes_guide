@@ -5,8 +5,9 @@
       <p>このしおりは<strong>同じ端末・ブラウザ</strong>で、チェックリストの内容が保存されます！</p>
       <p>しおりを利用される際は、<strong>ホーム画面にウェブサイトを追加</strong>することを推奨します。</p>
       <h3>iPhoneをお使いの方</h3>
-      <p>1. ウェブブラウザの画面内にある<strong><img src="../assets/share.svg" class="share-icon" />共有ボタン</strong>をクリック</p>
-      <p>2. 表示された画面から「ホーム画面に追加」をタップして完了</p>
+      <p>1. Xから開いた方は<strong><img src="../assets/safari.svg" class="share-icon" />コンパスマーク</strong>を押して、既定のブラウザで開く</p>
+      <p>2. ウェブブラウザの画面内にある<strong><img src="../assets/share.svg" class="share-icon" />共有ボタン</strong>をクリック</p>
+      <p>3. 表示された画面から「ホーム画面に追加」をタップして完了</p>
       <h3>Androidをお使いの方</h3>
       <p>1. ウェブブラウザの画面内にある「<strong>⋮</strong>」をクリック</p>
       <p>2. 表示された画面から「ホーム画面に追加」をタップして完了</p>
@@ -50,7 +51,7 @@ h3 {
 }
 
 .share-icon {
-  height: 16px;
+  height: 14px;
   padding: 0 2px;
   fill: var(--color-check);
 }
