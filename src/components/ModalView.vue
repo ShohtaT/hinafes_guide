@@ -73,12 +73,14 @@ p {
 }
 
 .modal-content {
-  background: white;
-  padding: 24px;
-  border-radius: 8px;
+  background: var(--color-background);
+  padding: 16px;
+  border-radius: 16px;
   width: 80%;
+  max-height: 80%;
   max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  overflow-y: auto;
 }
 </style>
