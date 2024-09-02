@@ -2,9 +2,9 @@
   <nav class="bottom-navigation">
     <router-link 
       v-if="!isLiveOrBelongingsView" 
-      to="/belongings" 
+      to="/" 
       class="nav-item" 
-      :class="[checklistClass, { 'active': isActive('/belongings') }]"
+      :class="[checklistClass, { 'active': isActive('/') }]"
     >
       <img 
         src="../assets/checklist_logo.svg" 
@@ -16,7 +16,7 @@
     <div 
       v-else
       class="nav-item" 
-      :class="[checklistClass, { 'active': isActive('/belongings') }]"
+      :class="[checklistClass, { 'active': isActive('/') }]"
     >
       <img 
         src="../assets/checklist_logo.svg" 
@@ -47,7 +47,7 @@ export default {
   computed: {
     isLiveOrBelongingsView() {
       const path = this.$route.path;
-      return path === '/live' || path === '/belongings';
+      return path === '/live' || path === '/';
     },
     checklistClass() {
       return this.isLiveOrBelongingsView ? 'primary-text' : 'gray-text';
