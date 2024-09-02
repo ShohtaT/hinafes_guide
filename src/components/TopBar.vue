@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    <h1>おひさまのしおり</h1>
+    <h1>ひなたフェス旅のしおり</h1>
     <div class="tabs">
       <router-link to="/" class="tab" active-class="active">
         <img src="../assets/belongings_logo.svg" class="icon" />
