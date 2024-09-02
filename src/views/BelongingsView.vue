@@ -6,16 +6,19 @@
       :category="category"
       @update="updateCategory" 
     />
+    <ModalView />
   </div>
 </template>
 
 <script>
 import ChecklistCategory from '../components/ChecklistCategory.vue'
+import ModalView from '../components/ModalView.vue'; // ここでファイル名に合わせる
 
 export default {
   name: 'BelongingsView',
   components: {
-    ChecklistCategory
+    ChecklistCategory,
+    ModalView
   },
   data() {
     return {
