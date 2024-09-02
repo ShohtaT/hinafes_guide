@@ -92,8 +92,8 @@ input[type="checkbox"] {
   position: relative;
   margin-right: 8px;
   display: inline-block;
-  vertical-align: middle; /* チェックボックスをテキストと同じ高さに揃える */
-  flex-shrink: 0; /* チェックボックスのサイズを固定する */
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 input[type="checkbox"]:checked {
@@ -102,16 +102,16 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::before {
-  content: "✔";
-  color: var(--color-white);
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  content: "";
+  display: block;
   position: absolute;
-  top: 50%; /* チェックマークを中央に揃える */
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: url('@/assets/checkmark.svg') no-repeat center center;
+  background-size: contain;
 }
 
 label {
