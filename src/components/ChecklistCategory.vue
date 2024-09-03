@@ -25,10 +25,17 @@ export default {
   },
   methods: {
     updateItem(itemId, checked) {
+      // Clone the category object to avoid direct mutation
       const updatedCategory = JSON.parse(JSON.stringify(this.category));
+      
+      // Find the item to update based on its ID
       const item = updatedCategory.items.find(i => i.id === itemId);
+      
+      // Update the checked state of the item
       if (item) {
         item.checked = checked;
+        
+        // Emit an event to update the parent component with the updated category
         this.$emit('update', updatedCategory);
       }
     }
@@ -75,8 +82,8 @@ li {
   font-weight: 500;
   width: 100%;
   display: flex;
-  align-items: flex-start; /* 垂直方向の開始位置に揃える */
-  justify-content: flex-start; /* 水平方向に左揃え */
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 input[type="checkbox"] {
@@ -115,8 +122,8 @@ input[type="checkbox"]:checked::before {
 }
 
 label {
-  display: inline-flex; /* inline-flexに変更 */
-  align-items: center; /* チェックボックスとテキストの高さを揃える */
-  line-height: 1.5; /* テキストが複数行になった時の行間調整 */
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.5;
 }
 </style>

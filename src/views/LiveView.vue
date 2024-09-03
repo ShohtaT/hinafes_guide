@@ -5,6 +5,7 @@
       :key="category.id" 
       :category="category"
       @update="updateCategory" 
+      @reorder="reorderItems"
     />
   </div>
 </template>
@@ -26,7 +27,28 @@ export default {
     loadData() {
       const storedData = localStorage.getItem('liveData')
       if (storedData) {
-        this.categories = JSON.parse(storedData)
+        this.categories = JSON.parse(storedData);
+
+        const mustHaveCategory = this.categories.find(c => c.id === 1);
+
+        // 追加したい複数のアイテム
+        const newItems = [
+          { id: 28, text: "追加したもの", checked: false },
+          { id: 16, text: "日焼け止め", checked: false },
+        ];
+
+        // 各新アイテムが既に存在するかチェックし、存在しない場合は追加
+        if (mustHaveCategory) {
+          newItems.forEach(newItem => {
+            if (!mustHaveCategory.items.some(item => item.id === newItem.id)) {
+              mustHaveCategory.items.push(newItem);
+            }
+          });
+
+          // 更新されたデータを保存
+          this.saveData();
+        }
+
       } else {
         // デフォルトデータ
         this.categories = [
@@ -60,8 +82,7 @@ export default {
               { id: 12, text: "レインコート", checked: false },
               { id: 13, text: "虫除け", checked: false },
               { id: 14, text: "帽子", checked: false },
-              { id: 15, text: "フード付きバスタオル", checked: false },
-              { id: 16, text: "日焼け止め", checked: false },
+              { id: 15, text: "フード付きバスタオル", checked: false }
             ]
           },
           {
@@ -95,6 +116,13 @@ export default {
       const index = this.categories.findIndex(c => c.id === updatedCategory.id);
       if (index !== -1) {
         this.categories[index] = updatedCategory;
+        this.saveData();
+      }
+    },
+    reorderItems(categoryId, reorderedItems) {
+      const index = this.categories.findIndex(c => c.id === categoryId);
+      if (index !== -1) {
+        this.categories[index].items = reorderedItems;
         this.saveData();
       }
     },
