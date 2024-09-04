@@ -4,12 +4,12 @@
     <div class="tabs">
       <router-link to="/" class="tab" active-class="active">
         <img src="../assets/belongings_logo.svg" class="icon" />
-        持ち物
+        ひなたフェス旅の持ち物
         <div class="indicator"></div>
       </router-link>
       <router-link to="/live" class="tab" active-class="active">
         <img src="../assets/live_logo.svg" class="icon" />
-        ライブ用
+        ライブの準備
         <div class="indicator"></div>
       </router-link>
     </div>
