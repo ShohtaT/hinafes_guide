@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       categories: [],
-      currentDataVersion: 1
+      currentDataVersion: 0
     };
   },
   methods: {
@@ -57,7 +57,23 @@ export default {
             id: 1,
             title: "オタク的必需品",
             items: [
-              
+              { id: 1, text: "ライブ・駐車場チケット", checked: false },
+              { id: 2, text: "推しメンタオル", checked: false },
+              { id: 3, text: "アクリルスタンド", checked: false },
+              { id: 4, text: "生写真", checked: false },
+              { id: 5, text: "ペンライト", checked: false },
+              { id: 6, text: "グッズTシャツ", checked: false },
+              { id: 7, text: "ラバーバンド", checked: false },
+              { id: 8, text: "SKINSTICKER", checked: false },
+              { id: 9, text: "うちわ", checked: false },
+              { id: 10, text: "スケッチブック", checked: false },
+              { id: 11, text: "双眼鏡", checked: false },
+              { id: 12, text: "生写真スリーブ", checked: false },
+              { id: 13, text: "硬質ケース", checked: false },
+              { id: 14, text: "フード付きバスタオル", checked: false },
+              { id: 15, text: "ペンライトの防水対策", checked: false },
+              { id: 16, text: "乾電池（単四）", checked: false },
+              { id: 17, text: "聖地マップ", checked: false }
             ]
           },
           {

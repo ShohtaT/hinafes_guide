@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       categories: [],
-      dataVersion: 1
+      dataVersion: 0
     }
   },
   methods: {
@@ -52,7 +52,22 @@ export default {
           id: 1,
           title: "to do",
           items: [
-            
+            { id: 1, text: "しっかり寝て体調を整える", checked: false },
+            { id: 2, text: "持ち物チェック", checked: false },
+            { id: 3, text: "行きと帰りのルート確認", checked: false },
+            { id: 4, text: "往復の切符購入（電車利用の場合）", checked: false },
+            { id: 5, text: "天気の確認", checked: false },
+            { id: 6, text: "各種コンテンツの時間確認", checked: false },
+            { id: 7, text: "ペンライトに新しい電池入れる", checked: false },
+            { id: 8, text: "ペンライトの防水対策", checked: false },
+            { id: 9, text: "SKINSTICKERを貼る", checked: false },
+            { id: 10, text: "うちわ制作", checked: false },
+            { id: 11, text: "スケッチブック制作", checked: false },
+            { id: 12, text: "メンバーコール・ペンライトカラー確認", checked: false },
+            { id: 13, text: "コールのイメトレ", checked: false },
+            { id: 14, text: "振りコピの練習", checked: false },
+            { id: 15, text: "MVを観る", checked: false },
+            { id: 16, text: "気持ちを高める", checked: false }
           ]
         },
         {
