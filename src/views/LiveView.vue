@@ -19,18 +19,16 @@ export default {
   },
   data() {
     return {
-      categories: [],
-      dataVersion: 1 // デフォルトデータのバージョン
+      categories: []
     }
   },
   methods: {
     loadData() {
       const storedCategoriesData = localStorage.getItem('categoriesData');
       const storedCheckStates = localStorage.getItem('checkStates');
-      const storedVersion = localStorage.getItem('dataVersion');
 
-      if (storedCategoriesData && storedVersion && parseInt(storedVersion) === this.dataVersion) {
-        // データのバージョンが一致する場合、タイトルと順番をロード
+      if (storedCategoriesData) {
+        // データが存在する場合はそれをロードする
         this.categories = JSON.parse(storedCategoriesData);
 
         // チェック状態を適用
@@ -41,7 +39,7 @@ export default {
           });
         });
       } else {
-        // バージョンが異なるか、データが存在しない場合、デフォルトデータを設定する
+        // データが存在しない場合はデフォルトデータを設定する
         const defaultCategories = [
           {
             id: 1,
@@ -173,9 +171,6 @@ export default {
         });
       });
       localStorage.setItem('checkStates', JSON.stringify(checkStates));
-      
-      // バージョンを保存
-      localStorage.setItem('dataVersion', this.dataVersion.toString());
     }
   },
   mounted() {

@@ -22,20 +22,18 @@ export default {
   },
   data() {
     return {
-      categories: [],
-      dataVersion: 2 // 現在のバージョン
+      categories: []
     }
   },
   methods: {
     loadData() {
       const storedData = localStorage.getItem('belongingsData');
-      const storedVersion = localStorage.getItem('dataVersion');
 
-      if (storedData && storedVersion && parseInt(storedVersion) === this.dataVersion) {
-        // バージョンが一致する場合、データをロードする
+      if (storedData) {
+        // データが存在する場合はそれをロードする
         this.categories = JSON.parse(storedData);
       } else {
-        // バージョンが異なる場合、デフォルトデータを設定する
+        // データが存在しない場合はデフォルトデータを設定する
         this.categories = [
           {
             id: 1,
@@ -144,7 +142,6 @@ export default {
     },
     saveData() {
       localStorage.setItem('belongingsData', JSON.stringify(this.categories));
-      localStorage.setItem('dataVersion', this.dataVersion.toString());
     }
   },
   mounted() {
