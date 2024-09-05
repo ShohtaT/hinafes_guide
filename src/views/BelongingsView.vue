@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ChecklistCategory from '../components/ChecklistCategory.vue'
+import ChecklistCategory from '../components/ChecklistCategory.vue';
 import ModalView from '../components/ModalView.vue'; // ファイル名に合わせる
 
 export default {
@@ -22,20 +22,38 @@ export default {
   },
   data() {
     return {
-      categories: []
-    }
+      categories: [],
+      currentDataVersion: 0
+    };
   },
   methods: {
     loadData() {
       const storedData = localStorage.getItem('belongingsData');
+      const storedVersion = localStorage.getItem('belongingsDataVersion');
 
-      if (storedData) {
-        // データが存在する場合はそれをロードする
+      if (storedData && storedVersion == this.currentDataVersion) {
+        // バージョンが一致すれば保存されたデータを使用
         this.categories = JSON.parse(storedData);
       } else {
-        // データが存在しない場合はデフォルトデータを設定する
-        this.categories = [
-          {
+        // バージョンが異なるかデータが無い場合はデフォルトデータをロード
+        this.categories = this.getDefaultCategories();
+        this.saveData();
+      }
+    },
+    updateCategory(updatedCategory) {
+      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
+      if (index !== -1) {
+        this.categories[index] = updatedCategory;
+        this.saveData();
+      }
+    },
+    saveData() {
+      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
+      localStorage.setItem('belongingsDataVersion', this.currentDataVersion); // バージョンも保存
+    },
+    getDefaultCategories() {
+      return [
+      {
             id: 1,
             title: "オタク的必需品",
             items: [
@@ -129,25 +147,13 @@ export default {
               { id: 58, text: "タブレット端末", checked: false },
             ]
           }
-        ];
-        this.saveData();
-      }
-    },
-    updateCategory(updatedCategory) {
-      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
-      if (index !== -1) {
-        this.categories[index] = updatedCategory;
-        this.saveData();
-      }
-    },
-    saveData() {
-      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
+      ];
     }
   },
   mounted() {
     this.loadData();
   }
-}
+};
 </script>
 
 <style scoped>
