@@ -143,6 +143,7 @@ export default {
       }
     },
     saveData() {
+      console.log('Saving Data:', this.categories); // デバッグ用
       localStorage.setItem('belongingsData', JSON.stringify(this.categories));
       localStorage.setItem('dataVersion', this.dataVersion.toString());
     }

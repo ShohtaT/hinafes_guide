@@ -32,13 +32,6 @@ body {
   text-align: center;
 }
 
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--color-primary);
-  padding: 10px 0;
-}
-
 .tab {
   color: var(--color-white);
   text-decoration: none;

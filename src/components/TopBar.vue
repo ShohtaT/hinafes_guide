@@ -1,7 +1,7 @@
 <template>
   <div class="top-bar">
     <h1>ひなたフェス旅のしおり</h1>
-    <div class="tabs">
+    <div v-if="isHomeOrLiveView" class="tabs">
       <router-link to="/" class="tab" active-class="active">
         <img src="../assets/belongings_logo.svg" class="icon" />
         ひなたフェス旅の持ち物
@@ -18,7 +18,12 @@
 
 <script>
 export default {
-  name: 'TopBar'
+  name: 'TopBar',
+  computed: {
+    isHomeOrLiveView() {
+      return this.$route.path === '/' || this.$route.path === '/live';
+    }
+  }
 }
 </script>
 
@@ -41,14 +46,14 @@ h1 {
   font-size: 20px;
   font-weight: 700;
   margin: 0;
-  padding-top: 8px;
+  padding: 8px 0;
   font-style: normal;
 }
 
 .tabs {
   display: flex;
   justify-content: space-around;
-  padding: 8px 0;
+  padding-bottom: 8px;
   font-size: 14px;
   font-weight: 500;
   font-style: normal;
