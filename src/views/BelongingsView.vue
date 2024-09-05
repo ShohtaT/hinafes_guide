@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ChecklistCategory from '../components/ChecklistCategory.vue'
+import ChecklistCategory from '../components/ChecklistCategory.vue';
 import ModalView from '../components/ModalView.vue'; // ファイル名に合わせる
 
 export default {
@@ -22,40 +22,42 @@ export default {
   },
   data() {
     return {
-      categories: []
-    }
+      categories: [],
+      currentDataVersion: 1
+    };
   },
   methods: {
     loadData() {
       const storedData = localStorage.getItem('belongingsData');
+      const storedVersion = localStorage.getItem('belongingsDataVersion');
 
-      if (storedData) {
-        // データが存在する場合はそれをロードする
+      if (storedData && storedVersion == this.currentDataVersion) {
+        // バージョンが一致すれば保存されたデータを使用
         this.categories = JSON.parse(storedData);
       } else {
-        // データが存在しない場合はデフォルトデータを設定する
-        this.categories = [
-          {
+        // バージョンが異なるかデータが無い場合はデフォルトデータをロード
+        this.categories = this.getDefaultCategories();
+        this.saveData();
+      }
+    },
+    updateCategory(updatedCategory) {
+      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
+      if (index !== -1) {
+        this.categories[index] = updatedCategory;
+        this.saveData();
+      }
+    },
+    saveData() {
+      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
+      localStorage.setItem('belongingsDataVersion', this.currentDataVersion); // バージョンも保存
+    },
+    getDefaultCategories() {
+      return [
+      {
             id: 1,
             title: "オタク的必需品",
             items: [
-              { id: 1, text: "ライブ・駐車場チケット", checked: false },
-              { id: 2, text: "推しメンタオル", checked: false },
-              { id: 3, text: "アクリルスタンド", checked: false },
-              { id: 4, text: "生写真", checked: false },
-              { id: 5, text: "ペンライト", checked: false },
-              { id: 6, text: "グッズTシャツ", checked: false },
-              { id: 7, text: "ラバーバンド", checked: false },
-              { id: 8, text: "SKINSTICKER", checked: false },
-              { id: 9, text: "うちわ", checked: false },
-              { id: 10, text: "スケッチブック", checked: false },
-              { id: 11, text: "双眼鏡", checked: false },
-              { id: 12, text: "生写真スリーブ", checked: false },
-              { id: 13, text: "硬質ケース", checked: false },
-              { id: 14, text: "フード付きバスタオル", checked: false },
-              { id: 15, text: "ペンライトの防水対策", checked: false },
-              { id: 16, text: "乾電池（単四）", checked: false },
-              { id: 17, text: "聖地マップ", checked: false }
+              
             ]
           },
           {
@@ -129,25 +131,13 @@ export default {
               { id: 58, text: "タブレット端末", checked: false },
             ]
           }
-        ];
-        this.saveData();
-      }
-    },
-    updateCategory(updatedCategory) {
-      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
-      if (index !== -1) {
-        this.categories[index] = updatedCategory;
-        this.saveData();
-      }
-    },
-    saveData() {
-      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
+      ];
     }
   },
   mounted() {
     this.loadData();
   }
-}
+};
 </script>
 
 <style scoped>
