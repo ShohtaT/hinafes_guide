@@ -1,30 +1,15 @@
 <template>
   <div class="note-container">
-    <h2 class="note-title">Note</h2>
     <div 
       v-for="(note, index) in notes" 
       :key="index" 
       class="note-item"
       @click="navigateToDetail(index + 1)"
     >
-      <h3>{{ note.title }}</h3>
-      <div class="note-content">
+      <div :class="getCategoryClass(note.content)" class="note-content">
         {{ note.content }}
-        <div v-if="note.images && note.images.length" class="note-images-container">
-          <div 
-            v-for="(image, imageIndex) in note.images" 
-            :key="imageIndex" 
-            class="note-image-container"
-          >
-            <img 
-              :src="getImageUrl(image)" 
-              :alt="`${note.title} - Image ${imageIndex + 1}`" 
-              class="note-image"
-              @error="handleImageError"
-            >
-          </div>
-        </div>
       </div>
+      <h3>{{ note.title }}</h3>
     </div>
   </div>
 </template>
@@ -39,18 +24,12 @@ export default {
     }
   },
   methods: {
-    getImageUrl(filename) {
-      if (!filename) return null;
-      try {
-        return require(`@/assets/noteimg/${filename}`);
-      } catch (error) {
-        console.warn(`Image not found: ${filename}`);
-        return null;
-      }
-    },
-    handleImageError(e) {
-      console.warn(`Failed to load image: ${e.target.src}`);
-      e.target.parentElement.style.display = 'none';
+    getCategoryClass(content) {
+      if (content === "イベント・体験") return "category1";
+      if (content === "グッズ・関連商品") return "category2";
+      if (content === "アクセス・サービス") return "category3";
+      if (content === "その他") return "category4";
+      return ""; // その他のカテゴリの場合
     },
     navigateToDetail(id) {
       this.$router.push(`/note/${id}`);
@@ -61,17 +40,14 @@ export default {
 
 <style scoped>
 .note-container {
-  background-color: #f0f8ff;
-  border-radius: 16px;
-  margin: 16px 24px;
+  margin: 56px 24px;
   max-width: 700px;
-  padding: 16px;
 }
 
 @media (min-width: 700px) {
   .note-container {
     max-width: 652px;
-    margin: 16px auto;
+    margin: 56px auto;
   }
 }
 
@@ -97,7 +73,7 @@ export default {
 .note-item h3 {
   font-size: 16px;
   font-weight: 600;
-  margin: 0 0 8px 0;
+  margin: 8px 0 0 0;
 }
 
 .note-content {
@@ -105,27 +81,18 @@ export default {
   line-height: 1.5;
 }
 
-.note-images-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
+.category1 {
+  color: #54C2C9; /* カテゴリ1の文字色 */
 }
 
-.note-image-container {
-  width: 70px;
-  height: 70px;
-  overflow: hidden;
-  position: relative;
+.category2 {
+  color: #88C053; /* カテゴリ2の文字色 */
 }
 
-.note-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.category3 {
+  color: #EDC256; /* カテゴリ3の文字色 */
+}
+.category4 {
+  color: #c2c2c2; /* カテゴリ3の文字色 */
 }
 </style>

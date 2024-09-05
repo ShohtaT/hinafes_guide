@@ -1,14 +1,10 @@
 <template>
   <div class="note-detail">
-    <div class="header">
-      <router-link to="/note" class="back-link">&lt;</router-link>
-      <h1>Note詳細</h1>
-    </div>
     <div v-if="note" class="content">
       <h2>{{ note.title }}</h2>
       <div v-html="note.content"></div>
     </div>
-    <div v-else>
+    <div v-else class="content">
       Loading...
     </div>
     <router-link to="/note" class="button_note">一覧に戻る</router-link>
@@ -42,33 +38,24 @@ export default {
         // エラー処理やリダイレクト
       }
     }
+  },
+  mounted() {
+    // コンポーネントがマウントされたときにスクロール位置をトップにリセット
+    window.scrollTo(0, 0);
   }
 }
 </script>
 
 <style scoped>
-.header {
-  display: flex;
-  align-items: center; /* 垂直方向の中央揃え */
-  position: relative; /* スペーサーの位置を調整するために相対位置を指定 */
-  height: 40px;
-  background-color: var(--color-primary);
-}
-.back-link {
-  font-size: 20px; /* リンクのサイズを調整 */
-  text-decoration: none; /* デフォルトの下線を削除 */
-  color: var(--color-text);
-  margin-left: 8px;
-}
 .content {
-  margin: 8px 24px;
+  margin: 48px 24px;
+  max-width: 700px;
 }
-h1 {
-  position: absolute; /* 中央揃えのために絶対位置指定 */
-  left: 50%; /* 左から50%の位置 */
-  transform: translateX(-50%); /* 中央に合わせるために水平に移動 */
-  margin: 0; /* デフォルトのマージンを削除 */
-  font-size: 18px;
+@media (min-width: 700px) {
+  .content {
+    max-width: 652px;
+    margin: 48px auto;
+  }
 }
 h2 {
   font-size: 20px;
@@ -76,7 +63,6 @@ h2 {
 .spacer {
   flex: 1; /* 空要素が残りのスペースを埋める */
 }
-
 .button_note {
   color: var(--color-text);
   border: 1px solid var(--color-text);

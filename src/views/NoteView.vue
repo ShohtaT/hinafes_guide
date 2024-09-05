@@ -14,19 +14,42 @@ export default {
       notes: [
         { 
           title: "場内駐車場について", 
-          content: "場内駐車場についての情報を記載", 
-          images: ["parking.png"] 
+          content: "アクセス・サービス"
         },
         {
           title: "場外駐車場について", 
-          content: "場外駐車場についての情報を記載" 
+          content: "アクセス・サービス" 
         },
         { 
-          title: "注意事項", 
-          content: "重要な情報をご確認ください" 
-        } // 画像なし
+          title: "クロークサービス＆宅配便", 
+          content: "アクセス・サービス" 
+        },
+        {
+          title: "地震情報",
+          content: "その他"
+        },
+        {
+          title: "飲食情報",
+          content: "アクセス・サービス"
+        },
+        {
+          title: "休憩所の情報",
+          content: "アクセス・サービス"
+        },
+        {
+          title: "会場での注意事項（日傘）",
+          content: "その他"
+        },
+        {
+          title: "ひなたフェススペシャルパレード",
+          content: "イベント・体験"
+        },
       ]
     }
+  },
+  mounted() {
+    // コンポーネントがマウントされたときにスクロール位置をトップにリセット
+    window.scrollTo(0, 0);
   }
 }
 </script>
