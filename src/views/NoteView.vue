@@ -25,7 +25,7 @@ export default {
           content: "アクセス・サービス" 
         },
         {
-          title: "地震情報",
+          title: "災害時のマニュアル",
           content: "その他"
         },
         {
@@ -43,6 +43,14 @@ export default {
         {
           title: "ひなたフェススペシャルパレード",
           content: "イベント・体験"
+        },
+        {
+          title: "サイリウム&コール表",
+          content: "その他"
+        },
+        {
+          title: "集合写真情報まとめ",
+          content: "その他"
         },
       ]
     }

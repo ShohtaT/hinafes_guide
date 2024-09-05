@@ -1,6 +1,6 @@
 export const note4 = {
   id: 4,
-  title: '地震情報',
+  title: '災害時のマニュアル',
   content: `
   <p>地震や災害の際の避難場所などが記載されている、重要な情報です。</p>
   <a href="https://www.miyazaki-spokyo.jp/sougou/tsunami_hinan.pdf" target="_blank">津波避難マニュアル</a><br>

@@ -1,6 +1,6 @@
 export const note2 = {
   id: 2,
-  title: '場内駐車場について',
+  title: '場外駐車場について',
   content: `
   <h3>宮崎大学</h3>
   <p>住所：宮崎県宮崎市学園木花台西1-1</p>
