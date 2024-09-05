@@ -11,7 +11,7 @@
       <h3>Androidをお使いの方</h3>
       <p>1. ウェブブラウザの画面内にある「<strong>⋮</strong>」をクリック</p>
       <p>2. 表示された画面から「ホーム画面に追加」をタップして完了</p>
-      <button  class="button" @click="closeModal">閉じる</button>
+      <button class="button_modal" @click="closeModal">閉じる</button>
     </div>
   </div>
 </template>
@@ -83,5 +83,16 @@ p {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   overflow-y: auto;
+}
+.button_modal {
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  background-color: var(--color-base);
+  width: 104px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 16px;
+  border-radius: 16px;
 }
 </style>

@@ -1,73 +1,64 @@
 <template>
-  <nav class="bottom-navigation">
+  <nav v-if="showNavigation" class="bottom-navigation">
+    <a 
+      @click.prevent="handleChecklistClick"
+      class="nav-item" 
+      :class="[isChecklistActive ? 'primary-text' : 'gray-text']"
+    >
+      <img 
+        src="../assets/checklist_logo.svg" 
+        class="icon" 
+        :style="isChecklistActive ? checklistActiveIconStyle : checklistInactiveIconStyle" 
+      />
+      チェックリスト
+    </a>
     <router-link 
-      v-if="!isLiveOrBelongingsView" 
-      to="/" 
+      to="/note" 
       class="nav-item" 
-      :class="[checklistClass, { 'active': isActive('/') }]"
-    >
-      <img 
-        src="../assets/checklist_logo.svg" 
-        class="icon" 
-        :style="checklistIconStyle" 
-      />
-      チェックリスト
-    </router-link>
-    <div 
-      v-else
-      class="nav-item" 
-      :class="[checklistClass, { 'active': isActive('/') }]"
-    >
-      <img 
-        src="../assets/checklist_logo.svg" 
-        class="icon" 
-        :style="checklistIconStyle" 
-      />
-      チェックリスト
-    </div>
-    <div 
-      class="nav-item" 
-      @click="showNoteMessage" 
-      :class="noteClass"
+      :class="[isActive('/note') ? 'primary-text' : 'gray-text']"
     >
       <img 
         src="../assets/note_logo.svg" 
         class="icon" 
-        :style="noteIconStyle" 
+        :style="isActive('/note') ? noteActiveIconStyle : noteInactiveIconStyle" 
       />
       Note
-    </div>
+    </router-link>
   </nav>
 </template>
-
 
 <script>
 export default {
   name: 'BottomNavigation',
   computed: {
-    isLiveOrBelongingsView() {
-      const path = this.$route.path;
-      return path === '/live' || path === '/';
+    checklistActiveIconStyle() {
+      return 'filter: invert(43%) sepia(96%) saturate(1223%) hue-rotate(184deg) brightness(95%) contrast(93%);'; // Blue color style
     },
-    checklistClass() {
-      return this.isLiveOrBelongingsView ? 'primary-text' : 'gray-text';
+    checklistInactiveIconStyle() {
+      return 'filter: invert(28%) sepia(0%) saturate(0%) hue-rotate(186deg) brightness(96%) contrast(82%);'; // Gray color style
     },
-    noteClass() {
-      return this.isLiveOrBelongingsView ? 'gray-text' : 'primary-text';
+    noteActiveIconStyle() {
+      return 'filter: invert(43%) sepia(96%) saturate(1223%) hue-rotate(184deg) brightness(95%) contrast(93%);'; // Blue color style
     },
-    checklistIconStyle() {
-      return this.isLiveOrBelongingsView ? 'filter: invert(35%) sepia(100%) saturate(1000%) hue-rotate(180deg) brightness(93%) contrast(90%);' : '';
+    noteInactiveIconStyle() {
+      return 'filter: invert(28%) sepia(0%) saturate(0%) hue-rotate(186deg) brightness(96%) contrast(82%);'; // Gray color style
     },
-    noteIconStyle() {
-      return this.isLiveOrBelongingsView ? '' : 'filter: invert(21%) sepia(91%) saturate(2994%) hue-rotate(342deg) brightness(100%) contrast(99%);';
+    isChecklistActive() {
+      return this.$route.path === '/' || this.$route.path === '/live';
+    },
+    showNavigation() {
+      // /note/{id} 形式のパスでは非表示にする
+      return !this.$route.path.match(/^\/note\/\d+$/);
     }
   },
   methods: {
-    showNoteMessage() {
-      alert('Note機能は現在開発中です。');
-    },
     isActive(route) {
       return this.$route.path === route;
+    },
+    handleChecklistClick() {
+      if (this.$route.path !== '/live') {
+        this.$router.push('/');
+      }
     }
   }
 }
