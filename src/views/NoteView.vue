@@ -13,14 +13,13 @@ export default {
     return {
       notes: [
         { 
-          title: "現地での交通機関", 
-          content: "行きの運行状況", 
+          title: "場内駐車場について", 
+          content: "場内駐車場についての情報を記載", 
           images: ["parking.png"] 
         },
-        { 
-          title: "駐車場情報はこちら", 
-          content: "地図情報", 
-          images: ["parking.png", "parking.png","parking.png","parking.png"] 
+        {
+          title: "場外駐車場について", 
+          content: "場外駐車場についての情報を記載" 
         },
         { 
           title: "注意事項", 

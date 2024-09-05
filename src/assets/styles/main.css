@@ -117,15 +117,3 @@ body {
 .active-nav-item {
   color: var(--color-primary);
 }
-
-.button {
-  color: var(--color-text);
-  border: 1px solid var(--color-text);
-  background-color: var(--color-base);
-  width: 104px;
-  height: 32px;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 16px;
-  border-radius: 16px;
-}
