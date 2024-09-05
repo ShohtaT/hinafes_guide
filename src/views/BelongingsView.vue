@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ChecklistCategory from '../components/ChecklistCategory.vue'
+import ChecklistCategory from '../components/ChecklistCategory.vue';
 import ModalView from '../components/ModalView.vue'; // ファイル名に合わせる
 
 export default {
@@ -23,21 +23,37 @@ export default {
   data() {
     return {
       categories: [],
-      dataVersion: 2 // 現在のバージョン
-    }
+      currentDataVersion: 0
+    };
   },
   methods: {
     loadData() {
       const storedData = localStorage.getItem('belongingsData');
-      const storedVersion = localStorage.getItem('dataVersion');
+      const storedVersion = localStorage.getItem('belongingsDataVersion');
 
-      if (storedData && storedVersion && parseInt(storedVersion) === this.dataVersion) {
-        // バージョンが一致する場合、データをロードする
+      if (storedData && storedVersion == this.currentDataVersion) {
+        // バージョンが一致すれば保存されたデータを使用
         this.categories = JSON.parse(storedData);
       } else {
-        // バージョンが異なる場合、デフォルトデータを設定する
-        this.categories = [
-          {
+        // バージョンが異なるかデータが無い場合はデフォルトデータをロード
+        this.categories = this.getDefaultCategories();
+        this.saveData();
+      }
+    },
+    updateCategory(updatedCategory) {
+      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
+      if (index !== -1) {
+        this.categories[index] = updatedCategory;
+        this.saveData();
+      }
+    },
+    saveData() {
+      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
+      localStorage.setItem('belongingsDataVersion', this.currentDataVersion); // バージョンも保存
+    },
+    getDefaultCategories() {
+      return [
+      {
             id: 1,
             title: "オタク的必需品",
             items: [
@@ -131,27 +147,13 @@ export default {
               { id: 58, text: "タブレット端末", checked: false },
             ]
           }
-        ];
-        this.saveData();
-      }
-    },
-    updateCategory(updatedCategory) {
-      const index = this.categories.findIndex(c => c.id === updatedCategory.id);
-      if (index !== -1) {
-        this.categories[index] = updatedCategory;
-        this.saveData();
-      }
-    },
-    saveData() {
-      console.log('Saving Data:', this.categories); // デバッグ用
-      localStorage.setItem('belongingsData', JSON.stringify(this.categories));
-      localStorage.setItem('dataVersion', this.dataVersion.toString());
+      ];
     }
   },
   mounted() {
     this.loadData();
   }
-}
+};
 </script>
 
 <style scoped>
