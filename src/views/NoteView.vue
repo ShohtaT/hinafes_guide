@@ -52,6 +52,18 @@ export default {
           title: "集合写真情報まとめ",
           content: "その他"
         },
+        {
+          title: "ライブ演出に放水が！？",
+          content: "イベント・体験"
+        },
+        {
+          title: "各種MAP一覧",
+          content: "イベント・体験"
+        },
+        {
+          title: "タイムテーブル公開！",
+          content: "イベント・体験"
+        },
       ]
     }
   },
